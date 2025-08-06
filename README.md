@@ -79,3 +79,5 @@ volumes:
   traefik_data:
   tailscale_data:
 ```
+
+0 1 * * * bash -x /opt/tailscale-derper/update-derper.sh > /var/log/update-derper.log 2>&1
