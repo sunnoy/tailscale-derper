@@ -1,0 +1,14 @@
+services:
+
+  derper:
+    image: ghcr.io/sunnoy/tailscale-derper:20250806
+    environment:
+      - DERP_DOMAIN=derper.li-rui.top
+      - DERP_VERIFY_CLIENTS=true
+      - DERP_ADDR=:80
+    ports:
+      - 3478:3478/udp
+      - 1989:80
+    volumes:
+      - /var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock
+    restart: always
