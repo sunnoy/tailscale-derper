@@ -2,7 +2,7 @@ services:
 
   derper:
     container_name: derper
-    image: ghcr.io/sunnoy/derper:20250806
+    image: ghcr.io/sunnoy/tailscale-derper:20250806
     environment:
       - DERP_DOMAIN=derper.li-rui.top
       - DERP_VERIFY_CLIENTS=true
