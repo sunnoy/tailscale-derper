@@ -10,8 +10,8 @@ WORKDIR="/opt/tailscale-derper"
 sed -i "s|\(ghcr.io/sunnoy/tailscale-derper:\)[0-9]\+|\1${DATE}|g" "$WORKDIR/docker-compose.yml"
 
 # 拉取新镜像（如果存在）
-docker-compose -f "$WORKDIR/docker-compose.yml" pull
+docker-compose -f "$WORKDIR/docker-compose.yaml" pull
 
-docker-compose -f "$WORKDIR/docker-compose.yml" down
+docker-compose -f "$WORKDIR/docker-compose.yaml" down
 # 重新启动容器
-docker-compose -f "$WORKDIR/docker-compose.yml" up -d
+docker-compose -f "$WORKDIR/docker-compose.yaml" up -d
