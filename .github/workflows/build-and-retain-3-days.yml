@@ -2,7 +2,7 @@ name: Daily Derper Build
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # 每天UTC 1点，北京时间早上9点
+    - cron: '0 17 * * *'   # 每天UTC 1点，北京时间早上9点
   workflow_dispatch:     # 允许手动触发
 
 env:
