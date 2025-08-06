@@ -1,16 +1,27 @@
 services:
-
   derper:
     container_name: derper
     image: ghcr.io/sunnoy/tailscale-derper:20250806
     environment:
       - DERP_DOMAIN=derper.li-rui.top
-      - DERP_VERIFY_CLIENTS=true
       - DERP_ADDR=:1989
+      - DERP_STUN=true
+      - DERP_STUN_PORT=3478
+      - DERP_HTTP_PORT=1989
+      - DERP_VERIFY_CLIENTS=true
     ports:
       - 3478:3478/udp
       - 1989:1989
-    # network_mode: host
     volumes:
       - /var/run/tailscale/tailscaled.sock:/var/run/tailscale/tailscaled.sock
     restart: always
+    command: >
+      sh -c '
+      /app/derper
+        --hostname=$DERP_DOMAIN
+        --a=$DERP_ADDR
+        --stun=$DERP_STUN
+        --stun-port=$DERP_STUN_PORT
+        --http-port=$DERP_HTTP_PORT
+        --verify-clients=$DERP_VERIFY_CLIENTS
+      '
